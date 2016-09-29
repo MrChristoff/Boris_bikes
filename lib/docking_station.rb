@@ -8,6 +8,7 @@ class DockingStation
   end
 
   def release_bike
+    raise StandardError if @bikes_docked.size < 1
     Bike.new
   end
 

@@ -24,4 +24,10 @@ describe DockingStation do
     expect(bike).to eql ("name")
   end
 
+  it "checks the bikes_docked Array is not empty" do
+
+    expect {
+      @station.release_bike
+    }.to raise_error(StandardError)
+  end
 end
