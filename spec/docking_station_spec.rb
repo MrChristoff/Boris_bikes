@@ -11,8 +11,9 @@ describe DockingStation do
   end
 
   it "should return a working bike" do
-    bike = @station.release_bike
-    expect(bike.working?).to eq (true)
+    (@station.dock_bike Bike.new)
+
+    expect((@station.bikes_docked[0]).working?).to eq (true)
   end
 
   it "should check that the dock_bike method exists" do
@@ -32,10 +33,12 @@ describe DockingStation do
     }.to raise_error(StandardError)
   end
 
-  it "ensures error is raised if bikes_docked has a bike" do
-    @station.dock_bike("bike1")
+  it "ensures error is raised if bikes_docked has > 20 bikes" do
+    20.times {@station.dock_bike Bike.new}
     expect {
-      @station.dock_bike("bike2")
+      @station.dock_bike(Bike.new)
     }.to raise_error(StandardError)
   end
+
+
 end
