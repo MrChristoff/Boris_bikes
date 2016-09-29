@@ -13,7 +13,9 @@ class DockingStation
   end
 
   def dock_bike(name)
+    raise StandardError if @bikes_docked.size > 0
     @name = name
+    @bikes_docked << name    
   end
 
 end
